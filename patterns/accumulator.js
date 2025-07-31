@@ -22,7 +22,22 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
-  // TODO
+  if (typeof n !== "number" ) {
+    return NaN;
+  } 
+  else if (n < 0) {
+    return undefined;
+  } 
+  else if (n === 0) {
+    return 1;
+  } 
+   else {
+    let prod = 1;
+    for (let i = 1; i <= n; i++) {
+	    prod *= i; 
+    }
+    return prod;
+  }
 }
 
 /**
@@ -32,7 +47,19 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
-  // TODO
+  if (typeof n !== "number" ) {
+    return null;
+  } 
+  else if (n <= 0) {
+    return [];
+  } 
+  else {
+    let myArray = [];
+    for (let i = 1; i <= n; i++) {
+      myArray.push(i);
+    }
+    return myArray;
+  }
 }
 
 /**
@@ -40,7 +67,17 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  if (!Array.isArray(strings) || strings.length === 0) {
+    return "";
+  } else {
+    let long = strings[0]
+    for (let i = 0; i < strings.length; i++) {
+      if (long.length < strings[i].length) {
+        long = strings[i];
+      }
+    }
+    return long
+  }
 }
 
 /**
@@ -48,7 +85,13 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
-  // TODO
+  let present = 0;
+  for (let i = 0; i < attendance.length; i++) {
+    if (attendance[i]) { 
+      present++;
+    }
+  }
+  return present;
 }
 
 /**
@@ -62,5 +105,24 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  if (typeof dna !== "string") {
+    return null;
+  }
+  if (dna === "") {
+    return "";
+  }
+  let complementaryStrand = "";
+  for (let i = 0; i < dna.length; i++) {
+    const nucleobase = dna[i];
+    if (nucleobase === "A") {
+      complementaryStrand += "T";
+    } else if (nucleobase === "T") {
+      complementaryStrand += "A";
+    } else if (nucleobase === "C") {
+      complementaryStrand += "G";
+    } else if (nucleobase === "G") {
+      complementaryStrand += "C";
+    }
+  }
+  return complementaryStrand;
 }
